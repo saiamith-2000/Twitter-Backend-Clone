@@ -5,17 +5,22 @@ const commentSchema=new mongoose.Schema({
         type: String,
         required:true
     },
-    comment:{
-        type: ObjectId,
-    },
     user:{
         type:mongoose.Schema.Types.ObjectId
     },
+    likes:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Like'
+    }],
     onModel:{
         type:String,
         required:true,
         enum: ["Tweet","Comment"]
     },
+    comment:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     commentable:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,

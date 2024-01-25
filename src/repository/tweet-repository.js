@@ -5,6 +5,14 @@ class TweetRepository extends CRUDRepository{
     constructor(){
         super(Tweet);
     } 
+    async getTweet(id){
+        try {
+            let tweet=await Tweet.findById(id);
+            return tweet;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 

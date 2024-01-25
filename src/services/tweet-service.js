@@ -29,7 +29,6 @@ async function createTweet(data){
         });
         return tweet;
     } catch (error) {
-        console.log(error);
         throw new AppError("Something went wrong during creation of tweet",StatusCodes.BAD_REQUEST);
     }
     
@@ -41,10 +40,18 @@ async function getTweet(id){
         const tweet=tweetRepository.get('_id',id);
         return tweet;
     } catch (error) {
-        console.log(error);
-        throw new AppError("Something went wrong during creation of tweet",StatusCodes.BAD_REQUEST);
+        throw new AppError("Something went wrong during fetch of tweet",StatusCodes.BAD_REQUEST);
+    }
+}
+
+async function getAll(){
+    try {
+        const tweets=tweetRepository.getAll();
+        return tweets;
+    } catch (error) {
+        throw new AppError("Something went wrong during fetching tweets",StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
 
-export {createTweet,getTweet};
+export {createTweet,getTweet,getAll};

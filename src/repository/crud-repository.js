@@ -22,6 +22,7 @@ class CRUDRepository{
         return response;
     }
     async get(fieldId,data){
+        const res=fieldId;
         const response = await this.model.find({ [fieldId]: data });
 
         if (!response || response.length === 0) {
